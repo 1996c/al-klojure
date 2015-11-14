@@ -290,6 +290,18 @@
     (if (palindrom? (* n m))
       [(* n m) n m]
       (recur (if (= m 100) (dec n) n) (if (= m 100) 999 (dec m))))))
+
+(defn eul4 []
+  (loop [n 900 m 900]
+    (if (palindrom? (* n m))
+      [(* n m) n m]
+      (recur (cond
+               (= (- n m) 10) (inc n)
+               (= n 999) n
+               :else n)
+             (cond
+               (= m 999) m
+               :else (inc m))))))
     
 (defn project-42 []
   (loop [n 100 m 100 x 0]
